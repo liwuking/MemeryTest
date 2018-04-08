@@ -70,8 +70,26 @@
     /****** _weak修饰符
      1，使用_weak修饰符的变量引用的对象被废弃时，自动赋值为nil
      2，使用_weak修饰符的变量即使用注册到autoreleasepool中的对象
+     
      */
 
+    /****** _autoreleasing. ARC下将对象赋值给附有_autoreleasing修饰符的变量等同于MRC下调用对象的autorelease方法;
+     id pool = objc_autoreleasePoolPush();
+     id objc = msg_send(NSMutableArray,@selector(alloc));
+     objc = msg_send(objc,@selector(init));
+     objc_autorelease(objc);
+     objc_autoreleasePoolPop(pool);
+     
+     id pool = objc_autoreleasePoolPush();
+     id objc = msg_send(NSMutableArray,@selector(array));
+     retainAutoreleasedRetainvalue(objc);
+     objc_autorelease(objc);
+     objc_autoreleasePoolPop(pool);
+     持有对象的方法由alloc变为retainAutoreleasedRetainvalue；
+     */
+    /****** 获取引用计数数值的方法
+     _objc_rootRetainCount(obj);不能完全信任该方法，对于已释放或者不正确的对象地址，有时候也返回‘1’，在多线程环境中，因为存在竞态条件的问题，所以取得的数值不一定可信；此方法在调试时很有用，但需要考虑它的局限性；
+     */
     
 }
 

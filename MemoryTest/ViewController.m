@@ -7,7 +7,7 @@
 //
 
 #import "ViewController.h"
-
+#import <objc/message.h>
 @interface ViewController ()
 
 @property(nonatomic,strong) id obj;
@@ -22,6 +22,8 @@
     
     self.obj = [[NSObject alloc] init];
     
+   
+  
 }
 
 
