@@ -13,6 +13,7 @@
 		A977FCF02079F301004A223E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A977FCEF2079F301004A223E /* Assets.xcassets */; };
 		A977FCF32079F301004A223E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A977FCF12079F301004A223E /* LaunchScreen.storyboard */; };
 		A977FCF62079F301004A223E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A977FCF52079F301004A223E /* main.m */; };
+		A977FCFE2079F6C1004A223E /* MemoryManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A977FCFD2079F6C1004A223E /* MemoryManager.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,8 @@
 		A977FCF22079F301004A223E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A977FCF42079F301004A223E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A977FCF52079F301004A223E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		A977FCFC2079F6C1004A223E /* MemoryManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MemoryManager.h; sourceTree = "<group>"; };
+		A977FCFD2079F6C1004A223E /* MemoryManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MemoryManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +65,8 @@
 				A977FCE72079F301004A223E /* AppDelegate.m */,
 				A977FCE92079F301004A223E /* ViewController.h */,
 				A977FCEA2079F301004A223E /* ViewController.m */,
+				A977FCFC2079F6C1004A223E /* MemoryManager.h */,
+				A977FCFD2079F6C1004A223E /* MemoryManager.m */,
 				A977FCEC2079F301004A223E /* Main.storyboard */,
 				A977FCEF2079F301004A223E /* Assets.xcassets */,
 				A977FCF12079F301004A223E /* LaunchScreen.storyboard */,
@@ -144,6 +149,7 @@
 			files = (
 				A977FCEB2079F301004A223E /* ViewController.m in Sources */,
 				A977FCF62079F301004A223E /* main.m in Sources */,
+				A977FCFE2079F6C1004A223E /* MemoryManager.m in Sources */,
 				A977FCE82079F301004A223E /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
