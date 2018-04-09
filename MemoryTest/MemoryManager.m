@@ -71,6 +71,34 @@
      1，使用_weak修饰符的变量引用的对象被废弃时，自动赋值为nil
      2，使用_weak修饰符的变量即使用注册到autoreleasepool中的对象
      
+     id __weak obj1 = self.obj;
+     编译器模拟代码
+         id obj1;
+         objc_initWeak(&obj1,_obj);
+         id teamp = objc_loadWeakRetained(&obj1);
+         objc_autorelease(teamp);
+         objc_destroyWeak(&obj1);
+         通过objc_initWeak函数初始化附有__weak修饰符的obj1，在变量作用域结束时通过objc_destroyWeak释放该变量;
+         objc_loadWeakRetained函数取出赋值给weak变量的对象并retain；objc_autorelease将对象注册到autoreleasepool中；
+     等同：
+         id obj1;
+         obj1 = 0；
+         objc_storeWeak(&obj1,_obj);
+         objc_storeWeak(&obj1,0);
+     
+         objc_storeWeak将第二参数的赋值对象的地址作为value，将第一参数附有_weak修饰符的变量的地址作为key，保存到weak表中。一个对象可对应多个_weak变量
+     
+     对象被废弃时的动作如下：
+         1，从weak表中获取废弃对象的地址作为value的记录；
+         2，将包含在记录中的_weak变量的地址都置为nil;
+         3，从weak表中删除该记录；
+         4，从引用计数表中删除废弃对象的地址作为key的记录；
+     
+     得出结论1，2；
+     
+     如果大量使用weak，则会消耗cpu资源，尽量只在解决循环引用的时候使用；
+     如果大量使用weak变量，则注册到autoreleasepool中的对象也会相应增加，所以先暂时赋值给_strong类型变量，然后赋值给_weak变量就可以解决此类问题；
+     
      */
 
     /****** _autoreleasing. ARC下将对象赋值给附有_autoreleasing修饰符的变量等同于MRC下调用对象的autorelease方法;
